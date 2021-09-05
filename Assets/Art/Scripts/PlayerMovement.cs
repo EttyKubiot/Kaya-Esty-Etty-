@@ -19,9 +19,14 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
+        transform.Rotate(Vector3.up * horizontal * rotationspeed * Time.deltaTime);
         float vertical = Input.GetAxis("Vertical");
         animator.SetFloat("Speed", vertical);
-        transform.Rotate(Vector3.up * horizontal * rotationspeed * Time.deltaTime);
         controller.SimpleMove(transform.forward * movespeed * vertical * Time.deltaTime);
+        float jump = Input.GetAxis("Jump");
+        animator.SetFloat("SpeedJump", jump);
+          
     }
+
+   
 }
